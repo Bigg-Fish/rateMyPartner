@@ -9,20 +9,30 @@ class Partner extends Component {
         this.state = {
             partner: {
                 "userID": "ObjectId(5dc6e88828df2e0f809a5a49)",
-                "fname": "dibs",
-                "lname": "dibsy",
+                "fname": "Kyle",
+                "lname": "DePace",
                 "email": "rubber.duckie@marist.edu",
                 "password": "bubblebath",
                 "ratings": [
                     {
-                        "rater": "shark",
+                        "rater": "User1",
+                        "rating": 3,
+                        "comment": "Awful person. he could die and we'd be more productive."
+                    },
+                    {
+                        "rater": "User2",
+                        "rating": 7,
+                        "comment": "Pretty decent at best. Not bad tho."
+                    },
+                    {
+                        "rater": "User3",
                         "rating": 10,
-                        "comment": "wow"
+                        "comment": "Literally carried me through the midterm."
                     },
                     {
                         "rater": "rubber",
-                        "rating": 7,
-                        "comment": "okay "
+                        "rating": 8,
+                        "comment": "Good guy. Fun dude."
                     }
                 ]
             }
@@ -55,6 +65,7 @@ class Partner extends Component {
             sum += rating.rating;
         }
         let avg = sum / ratings.length;
+        avg = Math.round(avg * 2) / 2;
         return (
             <div className="ratingBar">
                 {this.getStars(avg)}
@@ -78,7 +89,7 @@ class Partner extends Component {
                     {
                         this.state.partner.ratings.map((rating, i) =>
                             <div className="rating" key={i}>
-                                <h1>{rating.rater}{this.getStars(rating.rating)}</h1>
+                                <h2>{rating.rater}  {this.getStars(rating.rating)}</h2>
                                 <p>{rating.comment}</p>
                                 <div className="separator"></div>
                             </div>

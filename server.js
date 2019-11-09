@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 const mongo_uri = 'mongodb://localhost/react-auth';
-mongoose.connect(mongo_uri, { useNewUrlParser: true }, function (err) {
+mongoose.connect(mongo_uri, { useNewUrlParser: true, useUnifiedTopology: true }, function (err) {
   if (err) {
     throw err;
   } else {
@@ -26,6 +26,19 @@ mongoose.connect(mongo_uri, { useNewUrlParser: true }, function (err) {
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get("/api/profile/:id", function(req,res){   
+  User.findOne({
+    id: req.params.id
+  })
+  .then(
+    function(err,user) {
+      if(err){
+        res.send(err)
+      }
+      res.json(user)
+    }
+  )
+});
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -40,14 +53,19 @@ app.get('/api/secret', withAuth, function (req, res) {
 });
 
 app.post('/api/register', function (req, res) {
-  const { email, password } = req.body;
-  const user = new User({ email, password });
+  const { name,email, password } = req.body;
+  const user = new User({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password
+  });
   user.save(function (err) {
     if (err) {
       console.log(err);
       res.status(500).send("Error registering new user please try again.");
     } else {
       res.status(200).send("Welcome to the club!");
+      
     }
   });
 });

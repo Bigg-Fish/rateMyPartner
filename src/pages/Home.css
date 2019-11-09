@@ -1,25 +1,14 @@
-.welcome {
+.container {
     color: Black;
     width: 100%;
-    background: White;
+    background:white;
     padding: 1rem;
+    
+}
+.container p{
+    font-size: 25pt;
 }
 
-.welcome ul h1 {
-    display: inline;
-    font-size: 36pt;
-}
-
-.welcome ul a {
-    text-decoration: none;
-    color: inherit;
-    font-size: 24pt;
-}
-
-.welcome ul li {
-    display: inline;
-    padding: 1rem;
-}
 
 .container{
     text-align: center;

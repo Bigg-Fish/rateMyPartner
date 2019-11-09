@@ -46,6 +46,7 @@ export default class Login extends Component {
       <div>
         <Header />
         <div className="loginForm">
+          <h1>New? <a href="/register">Register Here</a>.</h1>
           <form onSubmit={this.onSubmit}>
             <h1>Login</h1>
             <input
@@ -66,7 +67,7 @@ export default class Login extends Component {
               required
             />
             <br></br>
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Login" />
           </form>
         </div>
       </div>

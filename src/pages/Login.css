@@ -2,6 +2,8 @@
     text-align: center;
     border-style: solid;
     border-color: gray;
+    background-color: lightgray;
+    box-shadow: lime;
     margin: 3rem;
     width: auto;
 }

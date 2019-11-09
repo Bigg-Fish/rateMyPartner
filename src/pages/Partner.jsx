@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Header from "../components/Header"
-import { FontAwesomeIcon } from '@fontawesome/react-fontawesome'
 
 
 class Partner extends Component {
@@ -16,16 +15,22 @@ class Partner extends Component {
     }
 
     getStars(number) {
-        stars = []
+        return (
+            <div>
+                {
+                    Array.apply(null, { length: Math.floor(number) }).map((e, i) => (
+                        <span key={i}>⭐</span>
+                    ))
+                }
+            </div>
+        )
     }
 
     render() {
         return (
             <div>
                 <Header />
-                this.state.partners.map((partner) => {
-
-                }
+                {this.getStars(7)}
             </div>
         );
     }

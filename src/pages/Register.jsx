@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from "../components/Header"
-import './Register.css'
+import './Login.css'
 
 export default class Login extends Component {
     constructor(props) {

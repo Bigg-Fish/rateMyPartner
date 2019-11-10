@@ -94,12 +94,7 @@ app.post("/api/review/:index", function(req,res) {
   //   comment: req.body.review
   // }
   // console.log(rating);
-  Person.then( function(err,rating) {
-    if(err) {
-      res.send(err);
-    }
-    ratings.push(rating).save();
-  });
+  Person.ratings.push(rating).save();
   /*User.findOneAndUpdate({
     index: req.params.index
   },{

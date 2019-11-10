@@ -82,7 +82,14 @@ app.post("/api/review/:index", function(req,res) {
     rating: req.body.rating,
     comment: req.body.review
   }
-  User.findOneAndUpdate({
+  User.findOne(req.params.index).then( function(err,rating) {
+    if(err) {
+      res.send(err);
+    }
+    ratings.push(rating);
+  })
+  .save();
+  /*User.findOneAndUpdate({
     index: req.params.index
   },{
     "$push": rating
@@ -92,7 +99,7 @@ app.post("/api/review/:index", function(req,res) {
       message: "Resources Are Created Successfully",
       data: result
     })
-  })
+  })*/
 })
 
 app.post('/api/register', function (req, res) {

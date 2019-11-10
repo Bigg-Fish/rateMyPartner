@@ -40,6 +40,17 @@ app.get("/api/partner/:index", function(req,res){
   )
 });
 
+app.get("/api/directory", function(req,res) {
+  User.find()
+  .then(
+    function(err,user) {
+      if(err){
+        res.send(err);
+      }
+      res.json(user);
+    }
+  )
+})
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
@@ -51,6 +62,24 @@ app.get('/api/home', function (req, res) {
 app.get('/api/secret', withAuth, function (req, res) {
   res.send('The password is potato');
 });
+
+app.get("/api/id/:email", function(req,res) {
+  User.findOne({
+    email: req.params.email
+  })
+  .then( function(err,res) {
+    if(err) {
+      res.send(err);
+    }
+    res.send(index)
+  })
+})
+app.post("/api/review/:index", function(req,res) {
+  User.findOne({
+    index: req.params.index
+  })
+  .ratings.push(req.body.ratings)
+})
 
 app.post('/api/register', function (req, res) {
   const { index,name,email, password } = req.body;

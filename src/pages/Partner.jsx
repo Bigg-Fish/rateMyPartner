@@ -9,43 +9,20 @@ class Partner extends Component {
         super(props);
         this.state = {
             partner: {
-                "userID": "ObjectId(5dc6e88828df2e0f809a5a49)",
-                "fname": "Kyle",
-                "lname": "DePace",
-                "email": "rubber.duckie1@marist.edu",
-                "password": "bubblebath",
-                "ratings": [
-                    {
-                        "rater": "User1",
-                        "rating": 3,
-                        "comment": "Awful person. he could die and we'd be more productive."
-                    },
-                    {
-                        "rater": "User2",
-                        "rating": 7,
-                        "comment": "Pretty decent at best. Not bad tho."
-                    },
-                    {
-                        "rater": "User3",
-                        "rating": 10,
-                        "comment": "Literally carried me through the midterm."
-                    },
-                    {
-                        "rater": "rubber",
-                        "rating": 8,
-                        "comment": "Good guy. Fun dude."
-                    }
-                ]
+                "id": "100000",
+                "name": "Loading",
+                "email": "Loading",
+                "ratings": []
             }
         }
     }
 
-    // componentDidMount() {
-    //     const { id } = this.props.match.params
-    //     fetch('/api/profiles/' + id)
-    //         .then(res => res.text())
-    //         .then(res => this.setState({ partner: res }));
-    // }
+    componentDidMount() {
+        const { id } = this.props.match.params
+        fetch('/api/partner/' + id)
+            .then(res => res.json())
+            .then(res => this.setState({ partner: res }));
+    }
 
     getStars(numStars) {
         return (
@@ -82,12 +59,12 @@ class Partner extends Component {
                 <span className="profile">
                     <img src={defaultImg} alt="Profile Pic" className="profilePic" width="150px"></img>
                     <div>
-                        <h3>{this.state.partner.fname} {this.state.partner.lname}'s Profile</h3>
+                        <h3>{this.state.partner.name}'s Profile</h3>
                         {this.getRating(this.state.partner)}
                     </div>
                     <div className="separator"></div>
                 </span>
-                <ReviewBox user={`${this.state.partner.fname} ${this.state.partner.lname}`} />
+                <ReviewBox user={this.state.partner.name} />
                 <div className="separator"></div>
                 <div className="ratingsHolder">
                     {

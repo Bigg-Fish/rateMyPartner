@@ -21,7 +21,8 @@ class Partner extends Component {
         const { id } = this.props.match.params
         fetch('/api/partner/' + id)
             .then(res => res.json())
-            .then(res => this.setState({ partner: res }));
+            .then(res => this.setState({ partner: res }))
+            .catch(err => console.log("Error: User Not Found"))
     }
 
     getStars(numStars) {
@@ -29,7 +30,7 @@ class Partner extends Component {
             <span>
                 {
                     Array.apply(null, { length: numStars }).map((e, i) => (
-                        <span key={i}>⭐</span>
+                        <span key={i}>⭝</span>
                     ))
 
                 }{numStars}

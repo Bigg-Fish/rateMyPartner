@@ -30,6 +30,15 @@ export default class Login extends Component {
       .then(res => {
         if (res.status === 200) {
           this.props.history.push('/');
+          fetch('/api/id/:email', {
+            method: 'GET',
+            body: "",
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+            .then(res => res.text())
+            .then(res => sessionStorage.setItem('id', res))
         } else {
           const error = new Error(res.error);
           throw error;

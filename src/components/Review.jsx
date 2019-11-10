@@ -20,7 +20,8 @@ class ReviewBox extends Component {
 
     onSubmit = (event) => {
         event.preventDefault();
-        fetch('/api/review', {
+        console.log(JSON.stringify(this.state))
+        fetch('/api/review/' + this.state.id, {
             method: 'POST',
             body: JSON.stringify(this.state),
             headers: {

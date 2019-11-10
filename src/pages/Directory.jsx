@@ -6,26 +6,26 @@ class Directory extends Component {
         super(props);
         this.state = {
             partners: [
-                {
-                    id: 100001,
-                    name: "Kyle DePace"
-                },
-                {
-                    id: 100002,
-                    name: "Jacob Butchko"
-                },
-                {
-                    id: 100003,
-                    name: "Luke Jacobs"
-                },
-                {
-                    id: 100004,
-                    name: "Kyle Ress"
-                },
-                {
-                    id: 100005,
-                    name: "Kyle Liere"
-                }
+                // {
+                //     id: 100001,
+                //     name: "Kyle DePace"
+                // },
+                // {
+                //     id: 100002,
+                //     name: "Jacob Butchko"
+                // },
+                // {
+                //     id: 100003,
+                //     name: "Luke Jacobs"
+                // },
+                // {
+                //     id: 100004,
+                //     name: "Kyle Ress"
+                // },
+                // {
+                //     id: 100005,
+                //     name: "Kyle Liere"
+                // }
             ]
         }
     }
@@ -35,6 +35,7 @@ class Directory extends Component {
             .then(res => res.json())
             .then(res => this.setState({ partners: res }))
             .catch(err => console.log("Error: User Not Found"))
+
     }
 
 
@@ -46,8 +47,8 @@ class Directory extends Component {
                 <div className="partnerHolder">
                     {
                         this.state.partners.map((partner, i) =>
-                            <div className="partner" key={partner.id}>
-                                <a href={"/partner/" + partner.id}>
+                            <div className="partner" key={partner.index}>
+                                <a href={"/partner/" + partner.index}>
                                     <h2>{partner.name}</h2>
                                     <div className="separator"></div>
                                 </a>

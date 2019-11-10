@@ -9,7 +9,7 @@ class Partner extends Component {
         super(props);
         this.state = {
             partner: {
-                "id": "100000",
+                "id": "1034600",
                 "name": "Loading",
                 "email": "Loading",
                 "ratings": []

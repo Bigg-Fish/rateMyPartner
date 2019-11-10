@@ -36,10 +36,9 @@ class Directory extends Component {
                 <h1>Viewing All {this.state.partners.length} Partners</h1>
                 <div className="partnerHolder">
                     {
-                        this.state.partners.map((rating, i) =>
-                            <div className="rating" key={i}>
-                                <h2>{rating.rater}  {this.getStars(rating.rating)}</h2>
-                                <p>{rating.comment}</p>
+                        this.state.partners.map((partner, i) =>
+                            <div className="partner" key={i}>
+                                <h2>{partner.name}</h2>
                                 <div className="separator"></div>
                             </div>
                         )

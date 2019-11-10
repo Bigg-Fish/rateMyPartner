@@ -37,7 +37,7 @@ class Directory extends Component {
                 <div className="partnerHolder">
                     {
                         this.state.partners.map((partner, i) =>
-                            <div className="partner" key={i}>
+                            <div className="partner" key={partner.id}>
                                 <h2>{partner.name}</h2>
                                 <div className="separator"></div>
                             </div>

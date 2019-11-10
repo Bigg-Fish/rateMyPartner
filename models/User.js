@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const rating = require("../models/Rating");
+//const rating = require("../models/Rating");
 const saltRounds = 10;
 
 
@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   name: {type: String, required: true, unique: true},
   email: {type: String, required: true, unique: true},
   password: { type: String, required: true },
-  ratings: [{type: rating}]
+  rating: [{type: Object}]
 });
 
 

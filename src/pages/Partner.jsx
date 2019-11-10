@@ -30,7 +30,7 @@ class Partner extends Component {
             <span>
                 {
                     Array.apply(null, { length: numStars }).map((e, i) => (
-                        <span key={i}>⭐</span>
+                        <span key={i}>⭝</span>
                     ))
 
                 }{numStars}

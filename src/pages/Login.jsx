@@ -32,7 +32,6 @@ export default class Login extends Component {
           this.props.history.push('/');
           fetch('/api/id/:email', {
             method: 'GET',
-            body: "",
             headers: {
               'Content-Type': 'application/json'
             }

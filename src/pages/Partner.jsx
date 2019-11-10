@@ -46,6 +46,9 @@ class Partner extends Component {
         }
         let avg = sum / ratings.length;
         avg = Math.round(avg * 2) / 2;
+        if (avg == NaN) {
+            return <div className="ratingBar"></div>
+        }
         return (
             <div className="ratingBar">
                 {this.getStars(avg)}

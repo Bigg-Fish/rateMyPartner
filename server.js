@@ -5,6 +5,7 @@ const path = require('path');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const User = require('./models/User');
+const Rating = require("./models/Rating");
 const withAuth = require('./middleware');
 let ind = 100000;
 const app = express();
@@ -26,30 +27,30 @@ mongoose.connect(mongo_uri, { useNewUrlParser: true, useUnifiedTopology: true },
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get("/api/partner/:index", function (req, res) {
+app.get("/api/partner/:index", function(req,res){   
   User.findOne({
     index: req.params.index
   })
-    .then(
-      function (err, user) {
-        if (err) {
-          res.send(err)
-        }
-        res.json(user)
+  .then(
+    function(err,user) {
+      if(err){
+        res.send(err)
       }
-    )
+      res.json(user)
+    }
+  )
 });
 
-app.get("/api/directory", function (req, res) {
+app.get("/api/directory", function(req,res) {
   User.find()
-    .then(
-      function (err, user) {
-        if (err) {
-          res.send(err);
-        }
-        res.json(user);
+  .then(
+    function(err,user) {
+      if(err){
+        res.send(err);
       }
-    )
+      res.json(user);
+    }
+  )
 })
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -63,26 +64,33 @@ app.get('/api/secret', withAuth, function (req, res) {
   res.send('The password is potato');
 });
 
-app.get("/api/id/:email", function (req, res) {
+app.get("/api/id/:email", function(req,res) {
   User.findOne({
     email: req.params.email
   })
-    .then(function (err, index) {
-      if (err) {
-        res.send(err);
-      }
-      res.send(index)
-    })
+  .then( function(err,index) {
+    if(err) {
+      res.send(err);
+    }
+    res.send(index)
+  })
 })
-app.post("/api/review/:index", function (req, res) {
+
+app.post("/api/review/:index", function(req,res) {
+  const rater = User.findOne(req.body.id);
+  const rating = new Rating({
+    rater: rater,
+    rating: req.body.rating,
+    comment: req.body.review
+  })
   User.findOne({
     index: req.params.index
   })
-    .ratings.push(req.body.ratings)
+  .ratings.push(rating)
 })
 
 app.post('/api/register', function (req, res) {
-  const { index, name, email, password } = req.body;
+  const { index,name,email, password } = req.body;
   const user = new User({
     index: ++ind,
     name: req.body.name,

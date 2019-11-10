@@ -1,10 +1,11 @@
 {
-  "name": "react-auth-example",
+  "name": "rate-my-partner",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
     "bcrypt": "^3.0.6",
     "body-parser": "^1.18.3",
+    "concurrently": "^5.0.0",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
@@ -15,7 +16,7 @@
     "react-scripts": "^3.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"react-scripts start\" \"node server.js\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",

@@ -78,7 +78,7 @@ app.get("/api/id/:email", function(req,res) {
 app.post("/api/review/:index", function(req,res) {
   const Person = User.findOne({index: req.params.index});
   const rater = Person.schema.obj.name;
-  console.log("Person"+person);
+  console.log("Person"+Person);
   console.log("rater"+rater);
   // .then((err,value) => {
   //   if(err){
@@ -111,7 +111,7 @@ app.post("/api/review/:index", function(req,res) {
       data: result
     })
   })*/
-})
+});
 
 app.post('/api/register', function (req, res) {
   const { index,name,email, password } = req.body;

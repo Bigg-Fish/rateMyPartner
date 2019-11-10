@@ -47,7 +47,7 @@ app.get("/api/directory", function(req,res) {
       if(err){
         res.send(err);
       }
-      res.json(find());
+      res.json(user);
     }
   )
 })

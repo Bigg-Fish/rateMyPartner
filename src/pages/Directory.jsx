@@ -29,6 +29,15 @@ class Directory extends Component {
             ]
         }
     }
+
+    componentDidMount() {
+        fetch('/api/directory')
+            .then(res => res.json())
+            .then(res => this.setState({ partners: res }))
+            .catch(err => console.log("Error: User Not Found"))
+    }
+
+
     render() {
         return (
             <div>
@@ -38,8 +47,10 @@ class Directory extends Component {
                     {
                         this.state.partners.map((partner, i) =>
                             <div className="partner" key={partner.id}>
-                                <h2>{partner.name}</h2>
-                                <div className="separator"></div>
+                                <a href={"/partner/" + partner.id}>
+                                    <h2>{partner.name}</h2>
+                                    <div className="separator"></div>
+                                </a>
                             </div>
                         )
                     }

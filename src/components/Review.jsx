@@ -6,7 +6,8 @@ class ReviewBox extends Component {
         super(props)
         this.state = {
             review: '',
-            rating: 5
+            rating: 5,
+            id: sessionStorage.getItem('id')
         };
     }
 

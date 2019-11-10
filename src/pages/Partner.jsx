@@ -40,12 +40,12 @@ class Partner extends Component {
         }
     }
 
-    // componentDidMount() {
-    //     const { id } = this.props.match.params
-    //     fetch('/api/profiles/' + id)
-    //         .then(res => res.text())
-    //         .then(res => this.setState({ partner: res }));
-    // }
+    componentDidMount() {
+        const { id } = this.props.match.params
+        fetch('/api/partner/' + id)
+            .then(res => res.json())
+            .then(res => this.setState({ partner: res }));
+    }
 
     getStars(numStars) {
         return (
@@ -82,12 +82,12 @@ class Partner extends Component {
                 <span className="profile">
                     <img src={defaultImg} alt="Profile Pic" className="profilePic" width="150px"></img>
                     <div>
-                        <h3>{this.state.partner.fname} {this.state.partner.lname}'s Profile</h3>
+                        <h3>{this.state.partner.name}'s Profile</h3>
                         {this.getRating(this.state.partner)}
                     </div>
                     <div className="separator"></div>
                 </span>
-                <ReviewBox user={`${this.state.partner.fname} ${this.state.partner.lname}`} />
+                <ReviewBox user={this.state.partner.name} />
                 <div className="separator"></div>
                 <div className="ratingsHolder">
                     {

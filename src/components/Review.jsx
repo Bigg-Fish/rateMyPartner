@@ -6,7 +6,7 @@ class ReviewBox extends Component {
         super(props)
         this.state = {
             review: '',
-            rating: ''
+            rating: 5
         };
     }
 
@@ -29,10 +29,10 @@ class ReviewBox extends Component {
             .then(res => {
                 if (res.status === 200) {
                     alert('Review submitted successfully');
-                    this.state = {
+                    this.setState({
                         review: '',
-                        rating: ''
-                    };
+                        rating: 5
+                    });
                 } else {
                     const error = new Error(res.error);
                     throw error;

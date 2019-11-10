@@ -10,7 +10,7 @@ const ratingSchema = new mongoose.Schema({
 
 
 const userSchema = new mongoose.Schema({
-  index: 100000,
+  index: {type: Number, required: true, unique: true},
   name: {type: String, required: true, unique: true},
   email: {type: String, required: true, unique: true},
   password: { type: String, required: true },

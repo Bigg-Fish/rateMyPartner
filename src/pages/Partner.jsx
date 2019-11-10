@@ -9,33 +9,10 @@ class Partner extends Component {
         super(props);
         this.state = {
             partner: {
-                "userID": "ObjectId(5dc6e88828df2e0f809a5a49)",
-                "fname": "Kyle",
-                "lname": "DePace",
-                "email": "rubber.duckie1@marist.edu",
-                "password": "bubblebath",
-                "ratings": [
-                    {
-                        "rater": "User1",
-                        "rating": 3,
-                        "comment": "Awful person. he could die and we'd be more productive."
-                    },
-                    {
-                        "rater": "User2",
-                        "rating": 7,
-                        "comment": "Pretty decent at best. Not bad tho."
-                    },
-                    {
-                        "rater": "User3",
-                        "rating": 10,
-                        "comment": "Literally carried me through the midterm."
-                    },
-                    {
-                        "rater": "rubber",
-                        "rating": 8,
-                        "comment": "Good guy. Fun dude."
-                    }
-                ]
+                "id": "100000",
+                "name": "Loading",
+                "email": "Loading",
+                "ratings": []
             }
         }
     }

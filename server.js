@@ -76,19 +76,19 @@ app.get("/api/id/:email", function(req,res) {
 })
 
 app.post("/api/review/:index", function(req,res) {
-  const rater = User.findOne(req.body.id).name;
-  rating = {
+  const rater = User.findOne(req.params.index).name;
+  const rating = {
     rater,
     rating: req.body.rating,
     comment: req.body.review
   }
+  console.log(rating);
   User.findOne(req.params.index).then( function(err,rating) {
     if(err) {
       res.send(err);
     }
-    ratings.push(rating);
-  })
-  .save();
+    ratings.push(rating).save();
+  });
   /*User.findOneAndUpdate({
     index: req.params.index
   },{

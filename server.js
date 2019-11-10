@@ -77,7 +77,7 @@ app.get("/api/id/:email", function(req,res) {
 })
 
 app.post("/api/review/:index", function(req,res) {
-  const rater = User.findOne(req.body.id);
+  const rater = User.findOne(req.body.id).name;
   const rating = new Rating({
     rater: rater,
     rating: req.body.rating,

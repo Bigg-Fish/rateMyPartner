@@ -1,0 +1,22 @@
+.reviewContainer {
+    margin-left: 15px;
+}
+
+.review input{
+    width: 80%;
+    height: 3rem;
+    align-content: center;
+    margin: 10px;
+}
+
+.rating input{
+    width: 80%;
+    height: 3rem;
+    align-content: center;
+    margin: 10px;
+}
+
+.button {
+    background-color: lightblue;
+    margin-bottom: 10px;
+}

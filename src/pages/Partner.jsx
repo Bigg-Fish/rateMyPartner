@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from "../components/Header"
 import defaultImg from "../defaultImg.jpg"
+import ReviewBox from '../components/Review'
 import "./Partner.css"
 
 class Partner extends Component {
@@ -40,9 +41,9 @@ class Partner extends Component {
     }
 
     componentDidMount() {
-        // fetch('/api/partner/')
-        //     .then(res => res.text())
-        //     .then(res => this.setState({ partner: res }));
+        fetch('/api/profiles/')
+            .then(res => res.text())
+            .then(res => this.setState({ partner: res }));
     }
 
     getStars(numStars) {
@@ -85,6 +86,8 @@ class Partner extends Component {
                     </div>
                     <div className="separator"></div>
                 </span>
+                <ReviewBox user={`${this.state.partner.fname} ${this.state.partner.lname}`} />
+                <div className="separator"></div>
                 <div className="ratingsHolder">
                     {
                         this.state.partner.ratings.map((rating, i) =>

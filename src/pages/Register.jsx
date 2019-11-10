@@ -7,7 +7,8 @@ export default class Login extends Component {
         super(props)
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            name: ''
         };
     }
 
@@ -29,7 +30,7 @@ export default class Login extends Component {
         })
             .then(res => {
                 if (res.status === 200) {
-                    this.props.history.push('/');
+                    this.props.history.push('/login');
                 } else {
                     const error = new Error(res.error);
                     throw error;
@@ -49,6 +50,15 @@ export default class Login extends Component {
                     <h1>Already Registered? <a href="/login">Login</a>.</h1>
                     <form onSubmit={this.onSubmit}>
                         <h1>Register</h1>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Enter your first and last name"
+                            value={this.state.name}
+                            onChange={this.handleInputChange}
+                            required
+                        />
+                        <br />
                         <input
                             type="email"
                             name="email"

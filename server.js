@@ -82,10 +82,17 @@ app.post("/api/review/:index", function(req,res) {
     rating: req.body.rating,
     comment: req.body.review
   }
-  User.findOne({
+  User.findOneAndUpdate({
     index: req.params.index
+  },{
+    "$push": rating
+  }, {new: true, safe: true, upsert: true}).then((result) => {
+    return res.status(200).json({
+      status: "Success",
+      message: "Resources Are Created Successfully",
+      data: result
+    })
   })
-  .rating.push(rating)
 })
 
 app.post('/api/register', function (req, res) {

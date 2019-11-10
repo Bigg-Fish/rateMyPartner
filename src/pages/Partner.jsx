@@ -9,20 +9,41 @@ class Partner extends Component {
         super(props);
         this.state = {
             partner: {
-                "id": "1034600",
-                "name": "Loading",
-                "email": "Loading",
-                "ratings": []
+                id: "1034600",
+                name: "William Kluge",
+                email: "Loading",
+                ratings: [
+                    {
+                        rater: "Bob Ross",
+                        comment: "Happy little trees.",
+                        rating: 7
+                    },
+                    {
+                        rater: "Billy Goat",
+                        comment: "Baaaa.",
+                        rating: 3
+                    },
+                    {
+                        rater: "Bob Saggit",
+                        comment: "Very good and stuff.",
+                        rating: 10
+                    },
+                    {
+                        rater: "Brian Smith",
+                        comment: "Yo how does this site work???",
+                        rating: 5
+                    },
+                ]
             }
         }
     }
 
     componentDidMount() {
-        const { id } = this.props.match.params
-        fetch('/api/partner/' + id)
-            .then(res => res.json())
-            .then(res => this.setState({ partner: res }))
-            .catch(err => console.log("Error: User Not Found"))
+        // const { id } = this.props.match.params
+        // fetch('/api/partner/' + id)
+        //     .then(res => res.json())
+        //     .then(res => this.setState({ partner: res }))
+        //     .catch(err => console.log("Error: User Not Found"))
     }
 
     getStars(numStars) {
@@ -30,7 +51,7 @@ class Partner extends Component {
             <span>
                 {
                     Array.apply(null, { length: numStars }).map((e, i) => (
-                        <span key={i}>⭝</span>
+                        <span key={i}>⭐</span>
                     ))
 
                 }{numStars}

@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const User = require('./models/User');
 const withAuth = require('./middleware');
-
+let ind = 100000;
 const app = express();
 
 const secret = 'Hackathon2019YoYoYo';
@@ -26,9 +26,9 @@ mongoose.connect(mongo_uri, { useNewUrlParser: true, useUnifiedTopology: true },
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get("/api/profile/:id", function(req,res){   
+app.get("/api/partner/:index", function(req,res){   
   User.findOne({
-    id: req.params.id
+    index: req.params.index
   })
   .then(
     function(err,user) {
@@ -53,8 +53,9 @@ app.get('/api/secret', withAuth, function (req, res) {
 });
 
 app.post('/api/register', function (req, res) {
-  const { name,email, password } = req.body;
+  const { index,name,email, password } = req.body;
   const user = new User({
+    index: ++ind,
     name: req.body.name,
     email: req.body.email,
     password: req.body.password
@@ -65,7 +66,6 @@ app.post('/api/register', function (req, res) {
       res.status(500).send("Error registering new user please try again.");
     } else {
       res.status(200).send("Welcome to the club!");
-      
     }
   });
 });

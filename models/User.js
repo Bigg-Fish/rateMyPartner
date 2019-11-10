@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-let count = 0;
 const saltRounds = 10;
 
 const ratingSchema = new mongoose.Schema({
@@ -11,7 +10,7 @@ const ratingSchema = new mongoose.Schema({
 
 
 const userSchema = new mongoose.Schema({
-  id: count++,
+  index: 100000,
   name: {type: String, required: true, unique: true},
   email: {type: String, required: true, unique: true},
   password: { type: String, required: true },

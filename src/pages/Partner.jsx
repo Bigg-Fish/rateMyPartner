@@ -12,7 +12,7 @@ class Partner extends Component {
                 "userID": "ObjectId(5dc6e88828df2e0f809a5a49)",
                 "fname": "Kyle",
                 "lname": "DePace",
-                "email": "rubber.duckie@marist.edu",
+                "email": "rubber.duckie1@marist.edu",
                 "password": "bubblebath",
                 "ratings": [
                     {
@@ -40,11 +40,12 @@ class Partner extends Component {
         }
     }
 
-    componentDidMount() {
-        fetch('/api/profiles/')
-            .then(res => res.text())
-            .then(res => this.setState({ partner: res }));
-    }
+    // componentDidMount() {
+    //     const { id } = this.props.match.params
+    //     fetch('/api/profiles/' + id)
+    //         .then(res => res.text())
+    //         .then(res => this.setState({ partner: res }));
+    // }
 
     getStars(numStars) {
         return (

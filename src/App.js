@@ -16,7 +16,7 @@ class App extends Component {
         <Route path="/secret" component={withAuth(Secret)} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
-        <Route path="/partner" component={Partner} />
+        <Route path="/partner/:id" component={Partner} />
       </Switch>
     );
   }

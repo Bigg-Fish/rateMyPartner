@@ -76,13 +76,22 @@ app.get("/api/id/:email", function(req,res) {
 })
 
 app.post("/api/review/:index", function(req,res) {
-  const rater = User.findOne({index: req.params.index}).name;
-  const rating = {
-    rater: rater,
-    rating: req.body.rating,
-    comment: req.body.review
-  }
-  console.log(rating);
+  const rater = User.findOne({index: req.params.index});
+  console.log(rater)
+  // .then((err,value) => {
+  //   if(err){
+  //     console.log(err)
+  //   }
+  //   console.log(value)
+  //   return value;
+  // })
+  // });
+  // const rating = {
+  //   rater: rater,
+  //   rating: req.body.rating,
+  //   comment: req.body.review
+  // }
+  // console.log(rating);
   User.findOne({index: req.params.index}).then( function(err,rating) {
     if(err) {
       res.send(err);

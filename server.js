@@ -47,7 +47,7 @@ app.get("/api/directory", function(req,res) {
       if(err){
         res.send(err);
       }
-      res.json(user);
+      res.json(find());
     }
   )
 })
@@ -67,7 +67,7 @@ app.get("/api/id/:email", function(req,res) {
   User.findOne({
     email: req.params.email
   })
-  .then( function(err,res) {
+  .then( function(err,index) {
     if(err) {
       res.send(err);
     }

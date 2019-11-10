@@ -5,7 +5,6 @@ const path = require('path');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const User = require('./models/User');
-const Rating = require("./models/Rating");
 const withAuth = require('./middleware');
 let ind = 100000;
 const app = express();

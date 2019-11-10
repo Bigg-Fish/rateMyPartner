@@ -76,14 +76,14 @@ app.get("/api/id/:email", function(req,res) {
 })
 
 app.post("/api/review/:index", function(req,res) {
-  const rater = User.findOne(req.params.index).name;
+  const rater = User.findOne({req.params.index}).name;
   const rating = {
-    rater,
+    rater: rater,
     rating: req.body.rating,
     comment: req.body.review
   }
   console.log(rating);
-  User.findOne(req.params.index).then( function(err,rating) {
+  User.findOne({req.params.index}).then( function(err,rating) {
     if(err) {
       res.send(err);
     }
